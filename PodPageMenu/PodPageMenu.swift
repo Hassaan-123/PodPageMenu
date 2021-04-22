@@ -55,7 +55,7 @@ public class PodPageMenu: UIViewController {
     public func adddesign(views : UIView , controller:UIViewController)
     {
         addnavigation(views: views)
-        myview = views
+        myview = controller.view
         myview.addSubview(segmentcontrl)
         myview.addSubview(mainview)
         segmentcontrl.heightAnchor.constraint(equalToConstant: 50).isActive=true

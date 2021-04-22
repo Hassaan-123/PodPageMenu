@@ -69,22 +69,22 @@ public class PodPageMenu: UIViewController {
         mainview.trailingAnchor.constraint(equalTo: myview.trailingAnchor).isActive=true
         mainview.bottomAnchor.constraint(equalTo: myview.bottomAnchor).isActive=true
         
-        segmentcontrl.addTarget(self, action: #selector(controlpressed(_:)), for: .valueChanged)
+        segmentcontrl.addTarget(self, action:  "(controlpressed(_:))", for: .valueChanged)
     }
-    @objc public func controlpressed(_ sender : UISegmentedControl)
+       public func controlpressed(_ sender : UISegmentedControl)
      {
          print("indise func")
         if sender.selectedSegmentIndex == 0
         {
-            mainview.backgroundColor = .systemRed
+            myview.backgroundColor = .systemRed
         }
         if sender.selectedSegmentIndex == 1
         {
-            mainview.backgroundColor = .yellow
+            myview.backgroundColor = .yellow
         }
         if sender.selectedSegmentIndex == 2
         {
-            mainview.backgroundColor = .systemOrange
+            myview.backgroundColor = .systemOrange
         }
         
          

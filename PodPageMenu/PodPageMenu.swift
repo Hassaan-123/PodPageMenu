@@ -7,7 +7,7 @@
 
 import UIKit
 
-class PodPageMenu: UIViewController {
+public class PodPageMenu: UIViewController {
 
     
     var items = ["First","Second","Third"]
@@ -29,7 +29,7 @@ class PodPageMenu: UIViewController {
            return mainview
        }()
     var myview : UIView!
-    override func viewDidLoad() {
+    public override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.

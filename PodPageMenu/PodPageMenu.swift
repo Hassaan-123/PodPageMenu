@@ -10,7 +10,8 @@ import UIKit
 public class PodPageMenu: UIViewController {
 
     
-    var items = ["First","Second","Third"]
+   public var items = ["First","Second","Third"]
+    var arrview : [UIView]!
    public lazy var segmentcontrl : UISegmentedControl =
        {
           
@@ -44,7 +45,7 @@ public class PodPageMenu: UIViewController {
     func addnavigation(views:UIView)
     {
         let width =  views.frame.width
-             let navigationBar: UINavigationBar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: width, height: 50))
+             let navigationBar: UINavigationBar = UINavigationBar(frame: CGRect(x: 0, y: 30, width: width, height: 50))
         views.addSubview(navigationBar);
              let navigationItem = UINavigationItem(title: "Page Menu")
 //             let doneBtn = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.done, target: nil, action: #selector(selectorX))
@@ -58,25 +59,24 @@ public class PodPageMenu: UIViewController {
         myview = controller.view
         myview.addSubview(segmentcontrl)
         myview.addSubview(mainview)
-        segmentcontrl.heightAnchor.constraint(equalToConstant: 50).isActive=true
-        segmentcontrl.topAnchor.constraint(equalTo: myview.topAnchor,constant: 50).isActive=true
-        segmentcontrl.leadingAnchor.constraint(equalTo: myview.leadingAnchor).isActive=true
-        segmentcontrl.trailingAnchor.constraint(equalTo: myview.trailingAnchor).isActive=true
-        
-         
-        mainview.topAnchor.constraint(equalTo: segmentcontrl.bottomAnchor).isActive=true
-        mainview.leadingAnchor.constraint(equalTo: myview.leadingAnchor).isActive=true
-        mainview.trailingAnchor.constraint(equalTo: myview.trailingAnchor).isActive=true
-        mainview.bottomAnchor.constraint(equalTo: myview.bottomAnchor).isActive=true
-        
-        segmentcontrl.addTarget(controller, action:  #selector(controlpressed),for: UIControl.Event.valueChanged )
+        addconstrain()
+        segmentcontrl.addTarget(self, action:  #selector(controlpressed),for: UIControl.Event.valueChanged )
     }
     public func addTarget()
     {
         print("print here")
     }
-    public func addconstrain()
+      func addconstrain()
     {
+        segmentcontrl.heightAnchor.constraint(equalToConstant: 50).isActive=true
+        segmentcontrl.topAnchor.constraint(equalTo: myview.topAnchor,constant: 50).isActive=true
+        segmentcontrl.leadingAnchor.constraint(equalTo: myview.leadingAnchor).isActive=true
+        segmentcontrl.trailingAnchor.constraint(equalTo: myview.trailingAnchor).isActive=true
+         
+        mainview.topAnchor.constraint(equalTo: segmentcontrl.bottomAnchor).isActive=true
+        mainview.leadingAnchor.constraint(equalTo: myview.leadingAnchor).isActive=true
+        mainview.trailingAnchor.constraint(equalTo: myview.trailingAnchor).isActive=true
+        mainview.bottomAnchor.constraint(equalTo: myview.bottomAnchor).isActive=true
         
     }
       @objc func controlpressed(_ sender : UISegmentedControl)
@@ -94,8 +94,8 @@ public class PodPageMenu: UIViewController {
         {
             mainview.backgroundColor = .systemOrange
         }
-        
-         
+
+
      }
 
     /*

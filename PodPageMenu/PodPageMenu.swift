@@ -97,6 +97,7 @@ public class PodPageMenu: UIViewController {
             {
                 swipeindex += 1
             segmentcontrl.selectedSegmentIndex = swipeindex
+            segmentcontrl.actions(forTarget: controlpressed(_ :), forControlEvent: UIControl.Event.valueChanged)
             mainview.bringSubviewToFront(arrview[swipeindex])
             }
     }

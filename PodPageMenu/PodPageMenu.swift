@@ -10,8 +10,8 @@ import UIKit
 public class PodPageMenu: UIViewController {
 
     
-   public var items = ["First","Second","Third"]
-    var arrview : [UIView]!
+   public var items = ["First"]
+   public var arrview : [UIView]!
    public lazy var segmentcontrl : UISegmentedControl =
        {
           
@@ -27,19 +27,30 @@ public class PodPageMenu: UIViewController {
        {
            let mainview = UIView()
         mainview.translatesAutoresizingMaskIntoConstraints=false
-           return mainview
+           
+        let firstview = UIView()
+        arrview.append(firstview)
+        return mainview
        }()
     var myview : UIView!
     public override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+ 
+        
         // Do any additional setup after loading the view.
     }
-    public func addtopsegments(title : String)
+    public func addtopsegments(title : [String])
     {
-        if title != ""
+        if title.count >= 0
         {
-            items.append(title)
+            for x in title
+            {
+            items.append(x)
+            let spclviews = UIView()
+            arrview.append(spclviews)
+                mainview.addSubview(spclviews)
+            }
         }
     }
     func addnavigation(views:UIView)
@@ -55,9 +66,12 @@ public class PodPageMenu: UIViewController {
     }
     public func adddesign(views : UIView , controller:UIViewController)
     {
+        
         addnavigation(views: views)
         myview = controller.view
         myview.addSubview(segmentcontrl)
+        segmentcontrl.selectedSegmentIndex = 0
+        arrview[0].backgroundColor = .red
         myview.addSubview(mainview)
         addconstrain()
         segmentcontrl.addTarget(self, action:  #selector(controlpressed),for: UIControl.Event.valueChanged )
@@ -69,7 +83,7 @@ public class PodPageMenu: UIViewController {
       func addconstrain()
     {
         segmentcontrl.heightAnchor.constraint(equalToConstant: 50).isActive=true
-        segmentcontrl.topAnchor.constraint(equalTo: myview.topAnchor,constant: 50).isActive=true
+        segmentcontrl.topAnchor.constraint(equalTo: myview.topAnchor,constant: 80).isActive=true
         segmentcontrl.leadingAnchor.constraint(equalTo: myview.leadingAnchor).isActive=true
         segmentcontrl.trailingAnchor.constraint(equalTo: myview.trailingAnchor).isActive=true
          
@@ -82,20 +96,8 @@ public class PodPageMenu: UIViewController {
       @objc func controlpressed(_ sender : UISegmentedControl)
      {
          print("indise func")
-        if sender.selectedSegmentIndex == 0
-        {
-            mainview.backgroundColor = .systemRed
-        }
-        if sender.selectedSegmentIndex == 1
-        {
-            mainview.backgroundColor = .yellow
-        }
-        if sender.selectedSegmentIndex == 2
-        {
-            mainview.backgroundColor = .systemOrange
-        }
-
-
+        
+         mainview.bringSubviewToFront(arrview[sender.selectedSegmentIndex])
      }
 
     /*

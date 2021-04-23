@@ -4,7 +4,7 @@ Pod::Spec.new do |spec|
   spec.platform     = :ios
   spec.ios.deployment_target = '12.0'
   spec.name         = "PodPageMenu"
-  spec.version      = "8.0.0"
+  spec.version      = "9.0.0"
   spec.summary      = "It gives you a Simple pod for segment control."
 
 
@@ -16,7 +16,7 @@ Pod::Spec.new do |spec|
   spec.author             = { "Hassaan-123" => "hassaanansari@magenative.com" }
 
 
-  spec.source       = { :git => "https://github.com/Hassaan-123/PodPageMenu.git", :tag => "8.0.0" }
+  spec.source       = { :git => "https://github.com/Hassaan-123/PodPageMenu.git", :tag => "9.0.0" }
   
  
   

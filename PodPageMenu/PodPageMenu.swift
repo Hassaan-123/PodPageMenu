@@ -106,6 +106,7 @@ public class PodPageMenu: UIViewController {
     @objc func controlpressed(_ sender : UISegmentedControl)
     {
         mainview.bringSubviewToFront(arrview[sender.selectedSegmentIndex])
+        arrview[sender.selectedSegmentIndex].backgroundColor = .white
     }
 
 /*

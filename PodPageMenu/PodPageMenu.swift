@@ -69,7 +69,11 @@ public class PodPageMenu: UIViewController {
         mainview.trailingAnchor.constraint(equalTo: myview.trailingAnchor).isActive=true
         mainview.bottomAnchor.constraint(equalTo: myview.bottomAnchor).isActive=true
         
-        segmentcontrl.addTarget(controller, action:  #selector(controlpressed(_:)), for: .valueChanged)
+        segmentcontrl.addTarget(controller, action:  #selector(controlpressed), for: .valueChanged)
+    }
+    public func addTarget()
+    {
+        print("print here")
     }
       @objc func controlpressed(_ sender : UISegmentedControl)
      {

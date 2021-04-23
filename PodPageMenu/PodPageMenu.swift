@@ -71,6 +71,13 @@ public class PodPageMenu: UIViewController {
         myview.addSubview(mainview)
         addconstrain()
         segmentcontrl.addTarget(self, action:  #selector(controlpressed),for: UIControl.Event.valueChanged )
+        
+        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(respondToSwipeGesture))
+        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(respondToSwipeGesture))
+           swipeRight.direction = .right
+        swipeLeft.direction = .left
+        myview.addGestureRecognizer(swipeRight)
+        myview.addGestureRecognizer(swipeLeft)
 
     for v in arrview
     {
@@ -78,6 +85,32 @@ public class PodPageMenu: UIViewController {
         mainview.addSubview(v)
         viewcontraint(innerview: v)
     }
+    }
+    var swipeindex = 0
+    @objc func respondToSwipeGesture(_ sender : UISwipeGestureRecognizer)
+    {
+        if sender.direction == .left
+            {
+            if swipeindex == items.count - 1
+            {}
+            else
+            {
+                swipeindex += 1
+            segmentcontrl.selectedSegmentIndex = swipeindex
+            mainview.bringSubviewToFront(arrview[swipeindex])
+            }
+    }
+    if sender.direction == .right
+        {
+            if swipeindex == 0{}
+            else
+            {
+            swipeindex -= 1
+        segmentcontrl.selectedSegmentIndex = swipeindex
+        mainview.bringSubviewToFront(arrview[swipeindex])
+            }
+        }
+        
     }
 
     func addconstrain()
